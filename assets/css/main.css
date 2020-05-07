@@ -1,0 +1,1115 @@
+/**
+ * Sass utils
+ */
+/**
+ * Map of colors for quick grabbing.
+ *
+ * @prop {Color} pink (#c6538c) - pink
+ * @prop {Color} light-purple (#e9e4f1) - light purple
+ * @prop {Color} purple (#998099) - purple
+ * @prop {Color} green (#699) - green
+ * @prop {Color} light-grey (#e0e0e0) - light grey
+ * @prop {Color} medium-grey (#ddd) - medium grey
+ * @prop {Color} dark-grey (#444) - dark grey
+ * @prop {Color} white (#f9f9f9) - white
+ *
+ * @see {function} color
+ *
+ * @type Map
+ */
+/**
+ * Map of breakpoints for responsive design.
+ *
+ * @see {mixin} respond-to
+ *
+ * @type Map
+ */
+/**
+ * Z-indexes layers.
+ *
+ * @prop {Number} key - aliases for specific z-indexes
+ *
+ * @see {function} z
+ *
+ * @type Map
+ */
+/**
+ * Sidebar width
+ *
+ * @type Number
+ */
+/**
+ * Returns the opposite direction of every direction in `$directions`.
+ *
+ * @param {List} $directions - Positions to revert
+ *
+ * @throws No opposite direction found for `$direction`.
+ *
+ * @return {List | Null}
+ */
+/**
+ * Clamp `$value` between `$min` and `$max`.
+ *
+ * @param {Number} $value - Value to clamp between `$min` and `$max`
+ * @param {Number} $min   - Minimum value
+ * @param {Number} $max   - Maximum value
+ *
+ * @throws All parameters must be numbers for `clamp`.
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Helper to manage `z-index`.
+ * Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
+ * If found, returns it, else returns `null`.
+ *
+ * @requires {variable} z-indexes
+ *
+ * @example scss
+ * z-index: z("default")
+ *
+ * @param {String} $layer - Layer
+ *
+ * @throws No z-index found for `$layer`.
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Color getter.
+ *
+ * @requires {variable} colors
+ * @requires SassCore::map-has-key <http://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method>
+ *
+ * @example scss
+ * color: color("pink");
+ *
+ * @param {String} $color - Color to fetch
+ *
+ * @throws No color found for `$color`. Please make sure it is defined in `$colors` map.
+ *
+ * @return {Color | Null}
+ */
+/**
+ * Tests whether the value is a valid length.
+ *
+ * @param {*} $value - Value to test
+ *
+ * @return {Bool}
+ */
+/**
+ * Computes a top-shadow for a card effect.
+ *
+ * @param {Number} $depth - depth level
+ *
+ * @return {List}
+ */
+/**
+ * Computes a bottom-shadow for a card effect.
+ *
+ * @param {Number} $depth - depth level
+ *
+ * @return {List}
+ */
+/**
+ * Mixin to size elements.
+ *
+ * @param {Number} $width           - Width
+ * @param {Number} $height ($width) - Height
+ */
+/**
+ * Shorthand for positioning.
+ * @link http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/ Documentation
+ *
+ * @access private
+ *
+ * @requires {function} is-valid-length
+ *
+ * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
+ * @param {List}   $args     (()) - List of offsets and values
+ *
+ * @throws Invalid value `$next` for offset `$offset`.
+ */
+/**
+ * Shorthand for absolute positioning.
+ *
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ *
+ * @requires {mixin} position
+ *
+ * @param {List} $args - List of offsets and values
+ *
+ * @example scss - Stretch an item over its parent.
+ *  @include absolute(top 0 right 0 bottom 0 left 0)
+ */
+/**
+ * Shorthand for relative positioning.
+ *
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ *
+ * @requires {mixin} position
+ *
+ * @param {List} $args - List of offsets and values
+ */
+/**
+ * Shorthand for fixed positioning.
+ *
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ *
+ * @requires {mixin} position
+ *
+ * @param {List} $args - List of offsets and values
+ */
+/**
+ * Responsive manager.
+ *
+ * @requires {variable} breakpoints
+ *
+ * @param {String} $breakpoint - Breakpoint
+ *
+ * @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+ */
+/**
+ * Mixin to fake CSS triangles with border hacks.
+ *
+ * @requires {mixin} absolute
+ * @requires {mixin} size
+ * @requires {function} opposite-direction
+ * @requires {function} z
+ *
+ * @param {String} $direction                - Triangle direction
+ * @param {List}   $position                 - Triangle position
+ * @param {Color}  $color     (currentcolor) - Triangle color
+ * @param {Number} $size      (1em)          - Triangle size
+ *
+ * @throws Direction must be one of top, right, bottom or left.
+ */
+/**
+ * Mixin to handle cross browser keyframes for CSS animations.
+ *
+ * @group cross-browser-support
+ *
+ * @param {String} $name - Animation name
+ */
+/**
+ * Mixin to prefix properties that are not prefixed by Compass
+ *
+ * @group cross-browser-support
+ *
+ * @example
+ *  @include prefixer('transform', 'translate(10px)');
+ *
+ * @param {String} $property                   - Property to prefix
+ * @param {*}      $value                      - Value for property
+ * @param {List}   $vendors  (webkit moz ms o) - Vendor prefixes to output
+ */
+/**
+ * Mixin for cross-browser opacity (IE 8).
+ * Clamps the value between 0 and 1.
+ *
+ * @group cross-browser-support
+ *
+ * @requires {function} clamp
+ *
+ * @param {Number} $opacity - Opacity level, between 0 and 1
+ */
+/**
+ * Mixin handling inline-block and vertical-align at once.
+ * If no align is specified, then the `vertical-align` property won't be output.
+ *
+ * @param {String} $align (null) - Vertical align
+ */
+/**
+ * Gives a card depth effect.
+ *
+ * @param {Number} $depth - depth level (between 1 and 5)
+ *
+ * @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+ *
+ * @requires {function} clamp
+ * @requires {function} color
+ * @requires {function} top-shadow
+ * @requires {function} bottom-shadow
+ */
+/**
+ * Float clearing helper.
+ *
+ * @group helpers
+ *
+ * @param {Bool} $extend (true) - Whether or not extend a placeholder.
+ */
+/**
+ * Clearfix helper
+ *
+ * @requires {mixin} clearfix
+ */
+.container:after, .header:after, .searchbar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/**
+ * Accessibility hiding helper.
+ *
+ * @group helpers
+ *
+ * @param {Bool} $extend (true) - Whether or not extend a placeholder.
+ *
+ * @requires {mixin} size
+ */
+/**
+ * Accessibility hiding helper.
+ *
+ * @requires {mixin} visually-hidden
+ */
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+/**
+ * Vendors
+ */
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript */
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+  color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value {
+  color: #e6db74;
+}
+
+.token.keyword {
+  color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important {
+  font-weight: bold;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/**
+ * Base stuff
+ */
+/**
+ * Univeral box-sizing reset
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+/**
+ * Body rules
+ */
+body {
+  font: 1em/1.35 'Lato', 'Helvetica', sans-serif;
+  overflow: auto;
+  margin: 0;
+}
+
+/**
+ * Links
+ */
+a {
+  transition: .15s;
+  text-decoration: none;
+  color: #a31541;
+}
+a:hover, a:hover code {
+  color: #444;
+}
+
+/**
+ * Code
+ */
+:not(pre) > code {
+  padding: 2px 4px;
+  font-family: 'Lato', 'Helvetica', sans-serif;
+  font-weight: normal;
+  color: #a31541;
+  background-color: white;
+  white-space: nowrap;
+  border-radius: 3px;
+  display: inline-block;
+  border: solid 2px #F7F7F7;
+}
+
+/**
+ * Tables
+ */
+@media (max-width: 800px) {
+  table, tbody, tr, td, th {
+    display: block;
+  }
+
+  thead {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+
+  tr {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #ddd;
+  }
+
+  td::before, th::before {
+    content: attr(data-label) ": ";
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  td p, th p {
+    display: inline;
+  }
+}
+/**
+ * Lists
+ */
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+  line-height: 1.5;
+}
+
+.list-inline li {
+  display: inline-block;
+}
+
+/**
+ * Main container
+ */
+.container {
+  max-width: 100%;
+  width: 1170px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+/**
+ * Visually-hidden
+ */
+/**
+ * Relative
+ */
+.relative {
+  position: relative;
+}
+
+/**
+ * Clear
+ */
+.clear {
+  clear: both;
+}
+
+.button {
+  border: 2px solid #333;
+  color: #333;
+  padding: 1em 3em;
+  display: inline-block;
+  border-radius: 3px;
+}
+.button:hover, .button:focus {
+  background: #F7F7F7;
+  border-color: #ddd;
+}
+
+/**
+ * Partials
+ */
+/**
+ * Header
+ */
+.header {
+  padding: 1em 0;
+  background: #F7F7F7;
+  color: #444;
+}
+
+/**
+ * Main title
+ */
+.header__title {
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 .5em 0;
+}
+.header__title a {
+  color: #e0e0e0;
+}
+@media (min-width: 801px) {
+  .header__title {
+    float: left;
+    font-size: 1em;
+    margin-top: .25em;
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Item count
+ */
+.header__description {
+  float: left;
+  padding-top: .3em;
+  width: calc(100% - 16em);
+}
+.header__description a {
+  color: white;
+  text-decoration: underline;
+}
+.header__description * {
+  margin: 0;
+}
+
+.searchbar {
+  display: inline-block;
+  float: right;
+}
+@media (max-width: 800px) {
+  .searchbar {
+    display: block;
+    float: none;
+  }
+}
+
+.searchbar__form {
+  float: right;
+  position: relative;
+  margin-top: 10px;
+}
+@media (max-width: 800px) {
+  .searchbar__form {
+    float: none;
+  }
+}
+@media (min-width: 801px) {
+  .searchbar__form {
+    min-width: 20em;
+  }
+}
+
+.searchbar__field {
+  border: none;
+  padding: .5em;
+  font-size: 1em;
+  margin: 0;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+}
+.searchbar__field:focus, .searchbar__field:hover {
+  outline: none;
+}
+
+.searchbar__suggestions {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  border: 1px solid #e0e0e0;
+  background: white;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 2;
+}
+.searchbar__suggestions:empty {
+  display: none;
+}
+.searchbar__suggestions .selected {
+  background: #ddd;
+}
+.searchbar__suggestions li {
+  border-bottom: 1px solid #e0e0e0;
+}
+.searchbar__suggestions li:last-of-type {
+  border: none;
+}
+.searchbar__suggestions a {
+  display: block;
+  padding: .5em;
+  font-size: .9em;
+}
+.searchbar__suggestions a:focus, .searchbar__suggestions a:active, .searchbar__suggestions a:hover {
+  background: #e0e0e0;
+}
+.searchbar__suggestions code {
+  margin-right: .5em;
+}
+
+/**
+ * Sidebar
+ */
+@media (min-width: 801px) {
+  .sidebar {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 280px;
+    z-index: 2;
+    background: #444;
+    color: #e0e0e0;
+    border-right: 3px solid #111;
+  }
+}
+
+/**
+ * Private and alias annotations
+ */
+.sidebar__annotation {
+  color: #444;
+}
+
+/**
+ * Sidebar content
+ */
+.sidebar__item {
+  font-size: .9em;
+}
+.sidebar__item a {
+  padding: 0.5em 4.5em;
+  display: block;
+  text-decoration: none;
+  font-weight: 300;
+  color: #e0e0e0;
+}
+.sidebar__item:hover {
+  background: #111;
+}
+.sidebar__item.is-collapsed + * {
+  display: none;
+}
+
+/**
+ * List item heading
+ */
+.sidebar__item--heading {
+  padding: 1em 1.5em;
+}
+.sidebar__item--heading a {
+  font-weight: bold;
+}
+
+.sidebar__item--sub-heading {
+  padding: 0.5em 2.5em;
+}
+.sidebar__item--sub-heading a {
+  color: #888;
+}
+
+.sidebar__item--heading,
+.sidebar__item--sub-heading {
+  position: relative;
+}
+.sidebar__item--heading:after,
+.sidebar__item--sub-heading:after {
+  content: '\25B2';
+  position: absolute;
+  top: 50%;
+  right: 2em;
+  margin-top: -.5em;
+  color: #ddd;
+  font-size: .7em;
+}
+.sidebar__item--heading.is-collapsed:after,
+.sidebar__item--sub-heading.is-collapsed:after {
+  content: '\25BC';
+}
+.sidebar__item--heading a,
+.sidebar__item--sub-heading a {
+  padding: 0;
+  display: inline;
+}
+
+/**
+ * Project description
+ */
+.sidebar__description {
+  color: #e0e0e0;
+  padding-right: 2em;
+}
+
+/**
+ * Sidebar header with title
+ */
+/**
+ * Sidebar main title
+ */
+.sidebar__title {
+  font-size: 1em;
+  margin: 0;
+  padding: 1.45em;
+}
+
+.btn-toggle {
+  background: #444;
+  border: none;
+  display: block;
+  padding: 1em;
+  width: 100%;
+  cursor: pointer;
+  color: #999;
+  font-weight: bold;
+  margin: 0;
+  transition: .15s ease-out;
+}
+.btn-toggle:hover {
+  background: #111;
+}
+
+/**
+ * Main wrapper
+ */
+.main {
+  background: #f9f9f9;
+  position: relative;
+  padding-bottom: 3em;
+}
+@media (min-width: 801px) {
+  .main {
+    padding-left: 280px;
+    min-height: 45em;
+    padding-bottom: 0;
+  }
+}
+
+/**
+ * Main titles
+ */
+.main__heading,
+.main__heading--secondary {
+  color: #444;
+  font-weight: 300;
+  padding: 1em 0;
+  margin-top: 0;
+  font-size: 3em;
+  text-transform: capitalize;
+}
+@media (min-width: 801px) {
+  .main__heading,
+  .main__heading--secondary {
+    padding: 2em 0 0;
+  }
+}
+
+.main__heading {
+  border-bottom: 5px solid #EFEFEF;
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+}
+
+.main__heading--secondary {
+  font-size: 2.5em;
+  text-transform: capitalize;
+  padding-top: 0;
+}
+
+.main__description {
+  font-weight: 100;
+  font-size: 4em;
+  text-align: center;
+  margin-top: 1em;
+}
+.main__description p {
+  margin: 0;
+}
+
+.main__github {
+  text-align: center;
+  margin: 2em;
+}
+
+/**
+ * Footer
+ */
+.footer {
+  background: #F7F7F7;
+  padding: 1em 0;
+}
+
+/**
+ * Project info
+ */
+.footer__project-info {
+  float: left;
+}
+
+/**
+ * "Built with SassDoc" mark.
+ */
+.footer__watermark {
+  float: right;
+}
+
+/**
+ * Make all three spans inline-blocks
+ */
+.project-info__name,
+.project-info__version,
+.project-info__license {
+  display: inline-block;
+}
+
+/**
+ * Make extra informations less prominent
+ */
+.project-info__version,
+.project-info__license {
+  color: #555;
+}
+
+/**
+ * Negates a space width
+ */
+.project-info__license {
+  text-indent: -.25em;
+}
+
+/**
+ * Item
+ */
+.item + .item {
+  margin: 4em 0;
+}
+.item p {
+  margin: 0 0 .5em 0;
+}
+
+/**
+ * Function name
+ */
+.item__heading {
+  color: #444;
+  margin: 0 0 .5em 0;
+  position: relative;
+  font-size: 2em;
+  font-weight: 300;
+  float: left;
+}
+
+/**
+ * Name
+ */
+.item__name {
+  color: #444;
+}
+
+/**
+ * Code blocks
+ */
+.item__example,
+.item__code {
+  word-wrap: break-word;
+  line-height: 1.42;
+  margin-bottom: 2px;
+}
+
+/**
+ * Leaves room for view source link
+ */
+.item__code {
+  padding-right: 7em;
+  clear: both;
+  cursor: pointer;
+}
+
+.item__code--togglable::after {
+  position: absolute;
+  top: 0;
+  right: 10em;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0;
+  background: #272822;
+  padding: 1.5em 1em 1em;
+  z-index: 999;
+  color: #ddd;
+  font-size: .8em;
+  transition: .2s ease-out;
+}
+.item__code--togglable:hover::after, .item__code--togglable:focus::after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  opacity: 1;
+}
+.item__code--togglable[data-current-state="expanded"]::after {
+  content: "Click to collapse.";
+}
+.item__code--togglable[data-current-state="collapsed"]::after {
+  content: "Click to expand.";
+}
+
+/**
+ * Example description
+ */
+.example__description {
+  padding: 1em;
+  background: #EFEFEF;
+}
+.example__description p {
+  margin: 0;
+}
+
+/**
+ * Example code
+ */
+.example__code[class*="language-"] {
+  margin: 0;
+}
+
+/**
+ * Anchor
+ */
+.item__anchor {
+  font-size: .6em;
+  color: #e5396e;
+}
+@media (min-width: 801px) {
+  .item__anchor {
+    position: absolute;
+    right: 101%;
+    bottom: 0.25em;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    opacity: 0;
+  }
+  .item:hover .item__anchor {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    opacity: 1;
+  }
+}
+
+/**
+ * Deprecated flag
+ */
+.item__deprecated strong {
+  color: #cc0000;
+  text-transform: uppercase;
+}
+
+/**
+ * Type
+ */
+.item__type {
+  color: #ddd;
+  text-transform: capitalize;
+  font-size: .75em;
+}
+
+/**
+ * Aliases
+ */
+.item__alias,
+.item__aliased {
+  color: #ddd;
+  font-size: .8em;
+}
+
+.item__sub-heading {
+  color: #111;
+  font-weight: 700;
+  margin-bottom: .5em;
+  margin-top: 1.5em;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+/**
+ * Parameters table
+ */
+.item__parameters {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+}
+.item__parameters thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  border-top: none;
+  text-align: left;
+}
+.item__parameters tbody th {
+  text-align: left;
+}
+.item__parameters td, .item__parameters th {
+  padding: .5em 0;
+  vertical-align: top;
+}
+
+@media (min-width: 801px) {
+  tbody > .item__parameter:first-of-type > td {
+    border-top: none;
+  }
+
+  .item__parameters td,
+  .item__parameters th {
+    border-top: 1px solid #ddd;
+  }
+}
+/**
+ * Scope/access
+ */
+.item__access {
+  text-transform: capitalize;
+  color: #a31541;
+  font-size: .8em;
+}
+
+/**
+ * Since
+ */
+.item__since {
+  float: right;
+  padding-top: .9em;
+  color: #c4c4c4;
+  margin-bottom: 1em;
+}
+
+/**
+ * Link to source
+ */
+.item__source-link {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: #272822;
+  padding: 1em;
+  z-index: 2;
+  color: #ddd;
+}
+.item__source-link:hover, .item__source-link:focus {
+  color: #F7F7F7;
+}
+
+/**
+ * Require's description
+ */
+.item__requires-description, .item__requires-description * {
+  display: inline-block;
+}
+.item__requires-description p {
+  vertical-align: sub;
+  margin: 0;
+  padding: 0 4px;
+}
+
+/**
+ * Vulcan
+ */
+.vulcan-logo {
+  width: 50px;
+  float: left;
+  display: block;
+}
+
+/*# sourceMappingURL=main.css.map */
